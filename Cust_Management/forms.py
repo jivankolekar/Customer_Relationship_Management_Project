@@ -9,10 +9,7 @@ from .models import Employee
 
 from django import forms
 
-
-
 from django.contrib.auth import authenticate, login, logout
-
 
 from captcha.fields import CaptchaField
 
@@ -38,21 +35,11 @@ class LoginForm(AuthenticationForm):
         some_text_field = models.CharField(max_length=50)
     captcha = MathCaptchaField()
         
-    
-    
-        
-        # password = forms.PasswordInput(widget = PasswordInput)
-# class CaptchaTestForm(forms.Form):
-    #     captcha = CaptchaField()
-
-# Creat Employee Records
 
 class CreateRecordForm(forms.ModelForm):
     class Meta:
         model = Employee
-
         fields = ['first_name','last_name','email','phone','address','city','state','country']
-
 
 # Update Record form
 
