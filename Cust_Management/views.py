@@ -15,11 +15,6 @@ from django.utils import timezone
 from django.core.mail import send_mail   # step1-mail
 # Create your views here
 
-
-# def home(request):
-#     return HttpResponse('Hello Jivan')
-
-
 def home(request):
     return render(request,'index.html')
 
@@ -40,17 +35,15 @@ def register(request):
     return render(request,'register.html', context=context)
 
 
-
-
 def login(request):
     form = LoginForm()
 
     if request.method == 'POST':
-        # username = request.POST['username']
+        
         form = LoginForm(request,data=request.POST)
         
         if form.is_valid():
-            # username = form.cleaned_data['username']
+            
             username = request.POST.get('username')
             password = request.POST.get('password')
 
@@ -65,8 +58,6 @@ def login(request):
     return render(request, 'login.html', context)
 
 
-
-
 def logout(request):
     auth.logout(request)
 
@@ -75,19 +66,11 @@ def logout(request):
     return redirect('login')
 
 
-
-
 def dashboard(request):
-    # send_mail('Subject heading here', 'Your main message here', 'jivankolekarr1@gmail.com', 
-    #           ['vinitvarvardkar0210@gmail.com','jivankolekarr1@gmail.com'], fail_silently=False,
-    #           auth_user=None, auth_password=None)
-                    #subject           # body-what you mention?  # send email                 # name of email who want to send
-    # return render(request, 'email-invoice.html')
+
     emp = Employee.objects.all()
     context ={'emp':emp}
     return render(request, 'dashboard.html', context)
-
-
 
 
 def createRecord(request):
@@ -107,8 +90,6 @@ def createRecord(request):
     return render(request, 'createRecord.html', context)
 
 
-
-
 def updaterecords(request,pk):
     emp = Employee.objects.get(id=pk)
     form = UpdateRecordForm(instance=emp)
@@ -126,8 +107,6 @@ def updaterecords(request,pk):
     return render(request, 'updateRecord.html', context)
 
 
-
-
 def delete(request,pk):
     emp = Employee.objects.get(id=pk)
     emp.delete()
@@ -136,16 +115,12 @@ def delete(request,pk):
     return redirect ('dashboard')
      
 
-
-
 def viewsrecord(request,pk):
     emp = Employee.objects.get(id=pk)
 
     context = {'emp':emp}
     
     return render(request, 'viewsRecord.html', context)
-
-
 
 
 def index(request):
