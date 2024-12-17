@@ -1,0 +1,58 @@
+{% extends 'home.html' %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+</head>
+{% block content %}
+<body>
+    
+    <div class="container bg-light shadow-md p5 " >
+        <!-- \end{code}                            form-layuot   -->
+
+    <h3>Create Your Account</h3>
+
+    <h5>Start Managing your client Today</h5>
+    <br>
+    <hr>
+
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+
+        <!-- {{form.username }} -->
+
+        <!-- {{form.as_p}} -->
+
+        {{form.username | as_crispy_field}}
+        <br>
+        {{form.password1 | as_crispy_field}}
+        <br>
+        {{form.password2 | as_crispy_field}}
+        <br>
+        <br>
+
+       <!-- {{form.password1 }}
+        
+        <br>
+        <br>
+
+        {{form.password2 }}
+
+        <br>
+        <br> -->
+
+        <button type="submit" class="btn-btn-primary m-100 btn-block">Create Account &nbsp;
+            <i class="fa-solid fa-user-plus"></i></button>
+        <Br> &nbsp;
+    <center>
+        <p>Already Have an Account;</p>
+        &nbsp;
+        <a type="button" class="btn btn-primary m-100 btn-block btn-info" href="{% url 'login' %}">Log In</a>
+    </center>
+        
+    </form>
+</div>
+</body>
+{% endblock %}
+</html>

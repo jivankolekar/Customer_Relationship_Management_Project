@@ -1,0 +1,70 @@
+
+
+{% extends 'home.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% load static %}
+<body>
+                            <!-- 5th step SessionTimeOut -->
+    {% for message in messages %} 
+
+
+            <p id="message-timer" class="alert alert-success folat-center text-center message-text">
+             {{message}} 
+            </p>
+
+
+
+     {% endfor %}
+
+    <div class="container bg-light shadow-md p-5 form layout">
+
+        <h1>Login to Your Account</h1>
+        <hr>
+        <br>
+
+
+        <form method="POST" autocomplete="off">
+
+            {% csrf_token %}
+
+            <!-- {{form.as_p}} -->
+            {{form.username | as_crispy_field}}
+            <br>
+            {{form.password | as_crispy_field}}
+            <br>
+            <div>{{ form.captcha }}</div>  
+            <div></div>
+
+            <br>
+            <br>
+
+            <button type="submit" class="btn-btn-primary w-50 btn-block p-2">Login <a href="{% url  'dashboard' %}"></a></button>
+
+        </form>
+        <br>
+
+        <div class="text-left">
+            <p> Don't have an Account ??</p>
+            <a href="{% url 'register' %}">register</a> 
+        </div>
+        <br>
+
+    </div>
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+{% endblock %}

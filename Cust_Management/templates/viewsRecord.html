@@ -1,0 +1,30 @@
+
+
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <i class="fa fa-user-circle-o" aria-hidden="true"> &nbsp;</i> 
+        <strong>
+            {{emp.first_name | upper }} &nbsp;
+            {{emp.last_name | upper }}
+        </strong>
+    </div>
+    <br>
+    <p><strong>ID:</strong>{{emp.id}}</p>
+    <p><strong>Email:</strong>{{emp.email}}</p>
+    <p><strong>Phone Number:</strong>{{emp.phone}}</p>
+    <p><strong>Address:</strong>{{emp.address}}</p>
+    <p><strong>City:</strong>{{emp.city}}</p>
+    <p><strong>State:</strong>{{emp.state}}</p>
+    <p><strong>Country:</strong>{{emp.country}}</p>
+    <p><strong>Publish_Date :</strong>{{emp.publish_date}}</p>
+</div>
+<a href="{% url 'dashboard' %} " class="btn btn-secondary">Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+&nbsp;
+<a href="{% url 'updaterecords' emp.id %} " class="btn btn-info">Updaterecord &nbsp; <i class="fa fa-plus" aria-hidden="true"></i></a>
+&nbsp;
+<a href="{% url 'delete' emp.id%} " class="btn btn-danger">Delete Record &nbsp; <i class="fa fa-minus-square" aria-hidden="true"></i></a>
+&nbsp;
+{% endblock %}

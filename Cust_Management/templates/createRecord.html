@@ -1,0 +1,29 @@
+    {% extends 'home.html' %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    {% block content %}
+    <body>
+        <div class="container bg-light shadow-md p5">
+            <h1> Create Employee Record </h1>
+            <h5> Start Adding your Details</h5>
+            <hr>
+            <br>
+            <form method="POST" autocomplete="off">
+                {% csrf_token %}
+                {{form.as_p}}
+                <br>
+                <br>
+                <button type="submit" class="btn-btn-primary">Submit Record &nbsp; <i class="fa fa-check" aria-hidden="true"></i></button>
+                &nbsp;
+                <a href="{% url 'dashboard' %} " class="btn-btn-primary">Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+            </form>
+        </div>
+    </body>
+    {% endblock %}
+    </html>
